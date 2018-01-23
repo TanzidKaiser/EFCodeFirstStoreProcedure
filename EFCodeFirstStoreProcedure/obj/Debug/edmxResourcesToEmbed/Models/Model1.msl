@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreProcedureDBModelStoreContainer" CdmEntityContainer="StoreProcedureDBEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="StoreProcedureDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getEmp" FunctionName="StoreProcedureDBModel.Store.sp_getEmp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="StoreProcedureDBModel.sp_getEmp_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_insertEmp" FunctionName="StoreProcedureDBModel.Store.sp_insertEmp" />
+  </EntityContainerMapping>
+</Mapping>
