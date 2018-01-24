@@ -50,5 +50,44 @@ namespace EFCodeFirstStoreProcedure.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertEmp", nameParameter, fnameParameter, salaryParameter);
         }
+    
+        public virtual ObjectResult<sp_getempbyid_Result> sp_getempbyid(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getempbyid_Result>("sp_getempbyid", idParameter);
+        }
+    
+        public virtual int sp_update(string name, string fname, Nullable<int> salary, Nullable<int> id)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var fnameParameter = fname != null ?
+                new ObjectParameter("fname", fname) :
+                new ObjectParameter("fname", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("salary", salary) :
+                new ObjectParameter("salary", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_update", nameParameter, fnameParameter, salaryParameter, idParameter);
+        }
+    
+        public virtual int sp_delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_delete", idParameter);
+        }
     }
 }
